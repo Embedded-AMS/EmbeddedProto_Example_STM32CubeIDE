@@ -1,3 +1,6 @@
 # Ignore build results
 **/*.a
 build/
+
+# Ignore the .mxproject file because it contains absolute paths.
+.mxproject
