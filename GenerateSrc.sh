@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Copyright (C) 2020 Embedded AMS B.V. - All Rights Reserved
+# Copyright (C) 2020-2024 Embedded AMS B.V. - All Rights Reserved
 #
 # This file is part of Embedded Proto.
 #
@@ -25,8 +25,8 @@
 #   info at EmbeddedProto dot com
 #
 # Postal adress:
-#   Johan Huizingalaan 763a
-#   1066 VH, Amsterdam
+#   Atoomweg 2
+#   1627 LE, Hoorn
 #   the Netherlands
 #
 
