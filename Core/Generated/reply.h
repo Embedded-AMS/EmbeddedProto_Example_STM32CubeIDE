@@ -1,36 +1,11 @@
 /*
- *  Copyright (C) 2020 Embedded AMS B.V. - All Rights Reserved
- *
- *  This file is part of Embedded Proto.
- *
- *  Embedded Proto is open source software: you can redistribute it and/or 
- *  modify it under the terms of the GNU General Public License as published 
- *  by the Free Software Foundation, version 3 of the license.
- *
- *  Embedded Proto  is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Embedded Proto. If not, see <https://www.gnu.org/licenses/>.
- *
- *  For commercial and closed source application please visit:
- *  <https://EmbeddedProto.com/license/>.
- *
- *  Embedded AMS B.V.
- *  Info:
- *    info at EmbeddedProto dot com
- *
- *  Postal adress:
- *    Johan Huizingalaan 763a
- *    1066 VH, Amsterdam
- *    the Netherlands
+ *  This file is generated with Embedded Proto, PLEASE DO NOT EDIT!
+ *  source: reply.proto
  */
 
 // This file is generated. Please do not edit!
-#ifndef _REPLY_H_
-#define _REPLY_H_
+#ifndef REPLY_H
+#define REPLY_H
 
 #include <cstdint>
 #include <MessageInterface.h>
@@ -38,24 +13,37 @@
 #include <Fields.h>
 #include <MessageSizeCalculator.h>
 #include <ReadBufferSection.h>
-#include <RepeatedField.h>
+#include <RepeatedFieldFixedSize.h>
+#include <FieldStringBytes.h>
+#include <Errors.h>
+#include <Defines.h>
+#include <limits>
 
-namespace demo
-{
+// Include external proto definitions
+
+namespace demo {
 
 class A final: public ::EmbeddedProto::MessageInterface
 {
   public:
-    A() :
-        x_(),
-        y_(),
-        z_()
+    A() = default;
+    A(const A& rhs )
     {
+      set_x(rhs.get_x());
+      set_y(rhs.get_y());
+      set_z(rhs.get_z());
+    }
 
-    };
+    A(const A&& rhs ) noexcept
+    {
+      set_x(rhs.get_x());
+      set_y(rhs.get_y());
+      set_z(rhs.get_z());
+    }
+
     ~A() override = default;
 
-    enum class id
+    enum class FieldNumber : uint32_t
     {
       NOT_SET = 0,
       X = 1,
@@ -63,133 +51,257 @@ class A final: public ::EmbeddedProto::MessageInterface
       Z = 3
     };
 
-    inline EmbeddedProto::uint32::FIELD_TYPE x() const { return x_.get(); }
-    inline void clear_x() { x_.set(0U); }
-    inline void set_x(const EmbeddedProto::uint32::FIELD_TYPE& value) { x_.set(value); }
-    inline void set_x(const EmbeddedProto::uint32::FIELD_TYPE&& value) { x_.set(value); }
-    inline EmbeddedProto::uint32::FIELD_TYPE get_x() const { return x_.get(); }
-
-    inline EmbeddedProto::uint32::FIELD_TYPE y() const { return y_.get(); }
-    inline void clear_y() { y_.set(0U); }
-    inline void set_y(const EmbeddedProto::uint32::FIELD_TYPE& value) { y_.set(value); }
-    inline void set_y(const EmbeddedProto::uint32::FIELD_TYPE&& value) { y_.set(value); }
-    inline EmbeddedProto::uint32::FIELD_TYPE get_y() const { return y_.get(); }
-
-    inline EmbeddedProto::uint32::FIELD_TYPE z() const { return z_.get(); }
-    inline void clear_z() { z_.set(0U); }
-    inline void set_z(const EmbeddedProto::uint32::FIELD_TYPE& value) { z_.set(value); }
-    inline void set_z(const EmbeddedProto::uint32::FIELD_TYPE&& value) { z_.set(value); }
-    inline EmbeddedProto::uint32::FIELD_TYPE get_z() const { return z_.get(); }
-
-    bool serialize(::EmbeddedProto::WriteBufferInterface& buffer) const final
+    A& operator=(const A& rhs)
     {
-      bool result = true;
+      set_x(rhs.get_x());
+      set_y(rhs.get_y());
+      set_z(rhs.get_z());
+      return *this;
+    }
 
-      if((0U != x_.get()) && result)
+    A& operator=(const A&& rhs) noexcept
+    {
+      set_x(rhs.get_x());
+      set_y(rhs.get_y());
+      set_z(rhs.get_z());
+      return *this;
+    }
+
+    static constexpr char const* X_NAME = "x";
+    inline void clear_x() { x_.clear(); }
+    inline void set_x(const uint32_t& value) { x_ = value; }
+    inline void set_x(const uint32_t&& value) { x_ = value; }
+    inline uint32_t& mutable_x() { return x_.get(); }
+    inline const uint32_t& get_x() const { return x_.get(); }
+    inline uint32_t x() const { return x_.get(); }
+
+    static constexpr char const* Y_NAME = "y";
+    inline void clear_y() { y_.clear(); }
+    inline void set_y(const uint32_t& value) { y_ = value; }
+    inline void set_y(const uint32_t&& value) { y_ = value; }
+    inline uint32_t& mutable_y() { return y_.get(); }
+    inline const uint32_t& get_y() const { return y_.get(); }
+    inline uint32_t y() const { return y_.get(); }
+
+    static constexpr char const* Z_NAME = "z";
+    inline void clear_z() { z_.clear(); }
+    inline void set_z(const uint32_t& value) { z_ = value; }
+    inline void set_z(const uint32_t&& value) { z_ = value; }
+    inline uint32_t& mutable_z() { return z_.get(); }
+    inline const uint32_t& get_z() const { return z_.get(); }
+    inline uint32_t z() const { return z_.get(); }
+
+
+    ::EmbeddedProto::Error serialize(::EmbeddedProto::WriteBufferInterface& buffer) const override
+    {
+      ::EmbeddedProto::Error return_value = ::EmbeddedProto::Error::NO_ERRORS;
+
+      if((0U != x_.get()) && (::EmbeddedProto::Error::NO_ERRORS == return_value))
       {
-        result = x_.serialize_with_id(static_cast<uint32_t>(id::X), buffer);
-      }  
+        return_value = x_.serialize_with_id(static_cast<uint32_t>(FieldNumber::X), buffer, false);
+      }
 
-      if((0U != y_.get()) && result)
+      if((0U != y_.get()) && (::EmbeddedProto::Error::NO_ERRORS == return_value))
       {
-        result = y_.serialize_with_id(static_cast<uint32_t>(id::Y), buffer);
-      }  
+        return_value = y_.serialize_with_id(static_cast<uint32_t>(FieldNumber::Y), buffer, false);
+      }
 
-      if((0U != z_.get()) && result)
+      if((0U != z_.get()) && (::EmbeddedProto::Error::NO_ERRORS == return_value))
       {
-        result = z_.serialize_with_id(static_cast<uint32_t>(id::Z), buffer);
-      }  
+        return_value = z_.serialize_with_id(static_cast<uint32_t>(FieldNumber::Z), buffer, false);
+      }
 
-      return result;
+      return return_value;
     };
 
-    bool deserialize(::EmbeddedProto::ReadBufferInterface& buffer) final
+    ::EmbeddedProto::Error deserialize(::EmbeddedProto::ReadBufferInterface& buffer) override
     {
-      bool result = true;
-      ::EmbeddedProto::WireFormatter::WireType wire_type;
+      ::EmbeddedProto::Error return_value = ::EmbeddedProto::Error::NO_ERRORS;
+      ::EmbeddedProto::WireFormatter::WireType wire_type = ::EmbeddedProto::WireFormatter::WireType::VARINT;
       uint32_t id_number = 0;
+      FieldNumber id_tag = FieldNumber::NOT_SET;
 
-      while(result && ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number))
+      ::EmbeddedProto::Error tag_value = ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number);
+      while((::EmbeddedProto::Error::NO_ERRORS == return_value) && (::EmbeddedProto::Error::NO_ERRORS == tag_value))
       {
-        switch(id_number)
+        id_tag = static_cast<FieldNumber>(id_number);
+        switch(id_tag)
         {
-          case static_cast<uint32_t>(id::X):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::VARINT == wire_type)
-            {
-              result = x_.deserialize(buffer);
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
+          case FieldNumber::X:
+            return_value = x_.deserialize_check_type(buffer, wire_type);
             break;
-          }
 
-          case static_cast<uint32_t>(id::Y):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::VARINT == wire_type)
-            {
-              result = y_.deserialize(buffer);
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
+          case FieldNumber::Y:
+            return_value = y_.deserialize_check_type(buffer, wire_type);
             break;
-          }
 
-          case static_cast<uint32_t>(id::Z):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::VARINT == wire_type)
-            {
-              result = z_.deserialize(buffer);
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
+          case FieldNumber::Z:
+            return_value = z_.deserialize_check_type(buffer, wire_type);
             break;
-          }
+
+          case FieldNumber::NOT_SET:
+            return_value = ::EmbeddedProto::Error::INVALID_FIELD_ID;
+            break;
 
           default:
+            return_value = skip_unknown_field(buffer, wire_type);
             break;
         }
+
+        if(::EmbeddedProto::Error::NO_ERRORS == return_value)
+        {
+          // Read the next tag.
+          tag_value = ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number);
+        }
       }
-      return result;
+
+      // When an error was detect while reading the tag but no other errors where found, set it in the return value.
+      if((::EmbeddedProto::Error::NO_ERRORS == return_value)
+         && (::EmbeddedProto::Error::NO_ERRORS != tag_value)
+         && (::EmbeddedProto::Error::END_OF_BUFFER != tag_value)) // The end of the buffer is not an array in this case.
+      {
+        return_value = tag_value;
+      }
+
+      return return_value;
     };
 
-    void clear() final
+    void clear() override
     {
       clear_x();
       clear_y();
       clear_z();
+
     }
+
+    static char const* field_number_to_name(const FieldNumber fieldNumber)
+    {
+      char const* name = nullptr;
+      switch(fieldNumber)
+      {
+        case FieldNumber::X:
+          name = X_NAME;
+          break;
+        case FieldNumber::Y:
+          name = Y_NAME;
+          break;
+        case FieldNumber::Z:
+          name = Z_NAME;
+          break;
+        default:
+          name = "Invalid FieldNumber";
+          break;
+      }
+      return name;
+    }
+
+#ifdef MSG_TO_STRING
+
+    ::EmbeddedProto::string_view to_string(::EmbeddedProto::string_view& str) const
+    {
+      return this->to_string(str, 0, nullptr, true);
+    }
+
+    ::EmbeddedProto::string_view to_string(::EmbeddedProto::string_view& str, const uint32_t indent_level, char const* name, const bool first_field) const override
+    {
+      ::EmbeddedProto::string_view left_chars = str;
+      int32_t n_chars_used = 0;
+
+      if(!first_field)
+      {
+        // Add a comma behind the previous field.
+        n_chars_used = snprintf(left_chars.data, left_chars.size, ",\n");
+        if(0 < n_chars_used)
+        {
+          // Update the character pointer and characters left in the array.
+          left_chars.data += n_chars_used;
+          left_chars.size -= n_chars_used;
+        }
+      }
+
+      if(nullptr != name)
+      {
+        if( 0 == indent_level)
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "\"%s\": {\n", name);
+        }
+        else
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "%*s\"%s\": {\n", indent_level, " ", name);
+        }
+      }
+      else
+      {
+        if( 0 == indent_level)
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "{\n");
+        }
+        else
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "%*s{\n", indent_level, " ");
+        }
+      }
+      
+      if(0 < n_chars_used)
+      {
+        left_chars.data += n_chars_used;
+        left_chars.size -= n_chars_used;
+      }
+
+      left_chars = x_.to_string(left_chars, indent_level + 2, X_NAME, true);
+      left_chars = y_.to_string(left_chars, indent_level + 2, Y_NAME, false);
+      left_chars = z_.to_string(left_chars, indent_level + 2, Z_NAME, false);
+  
+      if( 0 == indent_level) 
+      {
+        n_chars_used = snprintf(left_chars.data, left_chars.size, "\n}");
+      }
+      else 
+      {
+        n_chars_used = snprintf(left_chars.data, left_chars.size, "\n%*s}", indent_level, " ");
+      }
+
+      if(0 < n_chars_used)
+      {
+        left_chars.data += n_chars_used;
+        left_chars.size -= n_chars_used;
+      }
+
+      return left_chars;
+    }
+
+#endif // End of MSG_TO_STRING
 
   private:
 
-    EmbeddedProto::uint32 x_;
-    EmbeddedProto::uint32 y_;
-    EmbeddedProto::uint32 z_;
+
+      EmbeddedProto::uint32 x_ = 0U;
+      EmbeddedProto::uint32 y_ = 0U;
+      EmbeddedProto::uint32 z_ = 0U;
 
 };
 
 class B final: public ::EmbeddedProto::MessageInterface
 {
   public:
-    B() :
-        u_(),
-        v_(),
-        w_()
+    B() = default;
+    B(const B& rhs )
     {
+      set_u(rhs.get_u());
+      set_v(rhs.get_v());
+      set_w(rhs.get_w());
+    }
 
-    };
+    B(const B&& rhs ) noexcept
+    {
+      set_u(rhs.get_u());
+      set_v(rhs.get_v());
+      set_w(rhs.get_w());
+    }
+
     ~B() override = default;
 
-    enum class id
+    enum class FieldNumber : uint32_t
     {
       NOT_SET = 0,
       U = 1,
@@ -197,132 +309,293 @@ class B final: public ::EmbeddedProto::MessageInterface
       W = 3
     };
 
-    inline EmbeddedProto::doublefixed::FIELD_TYPE u() const { return u_.get(); }
-    inline void clear_u() { u_.set(0.0); }
-    inline void set_u(const EmbeddedProto::doublefixed::FIELD_TYPE& value) { u_.set(value); }
-    inline void set_u(const EmbeddedProto::doublefixed::FIELD_TYPE&& value) { u_.set(value); }
-    inline EmbeddedProto::doublefixed::FIELD_TYPE get_u() const { return u_.get(); }
-
-    inline EmbeddedProto::doublefixed::FIELD_TYPE v() const { return v_.get(); }
-    inline void clear_v() { v_.set(0.0); }
-    inline void set_v(const EmbeddedProto::doublefixed::FIELD_TYPE& value) { v_.set(value); }
-    inline void set_v(const EmbeddedProto::doublefixed::FIELD_TYPE&& value) { v_.set(value); }
-    inline EmbeddedProto::doublefixed::FIELD_TYPE get_v() const { return v_.get(); }
-
-    inline EmbeddedProto::doublefixed::FIELD_TYPE w() const { return w_.get(); }
-    inline void clear_w() { w_.set(0.0); }
-    inline void set_w(const EmbeddedProto::doublefixed::FIELD_TYPE& value) { w_.set(value); }
-    inline void set_w(const EmbeddedProto::doublefixed::FIELD_TYPE&& value) { w_.set(value); }
-    inline EmbeddedProto::doublefixed::FIELD_TYPE get_w() const { return w_.get(); }
-
-    bool serialize(::EmbeddedProto::WriteBufferInterface& buffer) const final
+    B& operator=(const B& rhs)
     {
-      bool result = true;
+      set_u(rhs.get_u());
+      set_v(rhs.get_v());
+      set_w(rhs.get_w());
+      return *this;
+    }
 
-      if((0.0 != u_.get()) && result)
+    B& operator=(const B&& rhs) noexcept
+    {
+      set_u(rhs.get_u());
+      set_v(rhs.get_v());
+      set_w(rhs.get_w());
+      return *this;
+    }
+
+    static constexpr char const* U_NAME = "u";
+    inline void clear_u() { u_.clear(); }
+    inline void set_u(const double& value) { u_ = value; }
+    inline void set_u(const double&& value) { u_ = value; }
+    inline double& mutable_u() { return u_.get(); }
+    inline const double& get_u() const { return u_.get(); }
+    inline double u() const { return u_.get(); }
+
+    static constexpr char const* V_NAME = "v";
+    inline void clear_v() { v_.clear(); }
+    inline void set_v(const double& value) { v_ = value; }
+    inline void set_v(const double&& value) { v_ = value; }
+    inline double& mutable_v() { return v_.get(); }
+    inline const double& get_v() const { return v_.get(); }
+    inline double v() const { return v_.get(); }
+
+    static constexpr char const* W_NAME = "w";
+    inline void clear_w() { w_.clear(); }
+    inline void set_w(const double& value) { w_ = value; }
+    inline void set_w(const double&& value) { w_ = value; }
+    inline double& mutable_w() { return w_.get(); }
+    inline const double& get_w() const { return w_.get(); }
+    inline double w() const { return w_.get(); }
+
+
+    ::EmbeddedProto::Error serialize(::EmbeddedProto::WriteBufferInterface& buffer) const override
+    {
+      ::EmbeddedProto::Error return_value = ::EmbeddedProto::Error::NO_ERRORS;
+
+      if((0.0 != u_.get()) && (::EmbeddedProto::Error::NO_ERRORS == return_value))
       {
-        result = u_.serialize_with_id(static_cast<uint32_t>(id::U), buffer);
-      }  
+        return_value = u_.serialize_with_id(static_cast<uint32_t>(FieldNumber::U), buffer, false);
+      }
 
-      if((0.0 != v_.get()) && result)
+      if((0.0 != v_.get()) && (::EmbeddedProto::Error::NO_ERRORS == return_value))
       {
-        result = v_.serialize_with_id(static_cast<uint32_t>(id::V), buffer);
-      }  
+        return_value = v_.serialize_with_id(static_cast<uint32_t>(FieldNumber::V), buffer, false);
+      }
 
-      if((0.0 != w_.get()) && result)
+      if((0.0 != w_.get()) && (::EmbeddedProto::Error::NO_ERRORS == return_value))
       {
-        result = w_.serialize_with_id(static_cast<uint32_t>(id::W), buffer);
-      }  
+        return_value = w_.serialize_with_id(static_cast<uint32_t>(FieldNumber::W), buffer, false);
+      }
 
-      return result;
+      return return_value;
     };
 
-    bool deserialize(::EmbeddedProto::ReadBufferInterface& buffer) final
+    ::EmbeddedProto::Error deserialize(::EmbeddedProto::ReadBufferInterface& buffer) override
     {
-      bool result = true;
-      ::EmbeddedProto::WireFormatter::WireType wire_type;
+      ::EmbeddedProto::Error return_value = ::EmbeddedProto::Error::NO_ERRORS;
+      ::EmbeddedProto::WireFormatter::WireType wire_type = ::EmbeddedProto::WireFormatter::WireType::VARINT;
       uint32_t id_number = 0;
+      FieldNumber id_tag = FieldNumber::NOT_SET;
 
-      while(result && ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number))
+      ::EmbeddedProto::Error tag_value = ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number);
+      while((::EmbeddedProto::Error::NO_ERRORS == return_value) && (::EmbeddedProto::Error::NO_ERRORS == tag_value))
       {
-        switch(id_number)
+        id_tag = static_cast<FieldNumber>(id_number);
+        switch(id_tag)
         {
-          case static_cast<uint32_t>(id::U):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::FIXED64 == wire_type)
-            {
-              result = u_.deserialize(buffer);
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
+          case FieldNumber::U:
+            return_value = u_.deserialize_check_type(buffer, wire_type);
             break;
-          }
 
-          case static_cast<uint32_t>(id::V):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::FIXED64 == wire_type)
-            {
-              result = v_.deserialize(buffer);
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
+          case FieldNumber::V:
+            return_value = v_.deserialize_check_type(buffer, wire_type);
             break;
-          }
 
-          case static_cast<uint32_t>(id::W):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::FIXED64 == wire_type)
-            {
-              result = w_.deserialize(buffer);
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
+          case FieldNumber::W:
+            return_value = w_.deserialize_check_type(buffer, wire_type);
             break;
-          }
+
+          case FieldNumber::NOT_SET:
+            return_value = ::EmbeddedProto::Error::INVALID_FIELD_ID;
+            break;
 
           default:
+            return_value = skip_unknown_field(buffer, wire_type);
             break;
         }
+
+        if(::EmbeddedProto::Error::NO_ERRORS == return_value)
+        {
+          // Read the next tag.
+          tag_value = ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number);
+        }
       }
-      return result;
+
+      // When an error was detect while reading the tag but no other errors where found, set it in the return value.
+      if((::EmbeddedProto::Error::NO_ERRORS == return_value)
+         && (::EmbeddedProto::Error::NO_ERRORS != tag_value)
+         && (::EmbeddedProto::Error::END_OF_BUFFER != tag_value)) // The end of the buffer is not an array in this case.
+      {
+        return_value = tag_value;
+      }
+
+      return return_value;
     };
 
-    void clear() final
+    void clear() override
     {
       clear_u();
       clear_v();
       clear_w();
+
     }
+
+    static char const* field_number_to_name(const FieldNumber fieldNumber)
+    {
+      char const* name = nullptr;
+      switch(fieldNumber)
+      {
+        case FieldNumber::U:
+          name = U_NAME;
+          break;
+        case FieldNumber::V:
+          name = V_NAME;
+          break;
+        case FieldNumber::W:
+          name = W_NAME;
+          break;
+        default:
+          name = "Invalid FieldNumber";
+          break;
+      }
+      return name;
+    }
+
+#ifdef MSG_TO_STRING
+
+    ::EmbeddedProto::string_view to_string(::EmbeddedProto::string_view& str) const
+    {
+      return this->to_string(str, 0, nullptr, true);
+    }
+
+    ::EmbeddedProto::string_view to_string(::EmbeddedProto::string_view& str, const uint32_t indent_level, char const* name, const bool first_field) const override
+    {
+      ::EmbeddedProto::string_view left_chars = str;
+      int32_t n_chars_used = 0;
+
+      if(!first_field)
+      {
+        // Add a comma behind the previous field.
+        n_chars_used = snprintf(left_chars.data, left_chars.size, ",\n");
+        if(0 < n_chars_used)
+        {
+          // Update the character pointer and characters left in the array.
+          left_chars.data += n_chars_used;
+          left_chars.size -= n_chars_used;
+        }
+      }
+
+      if(nullptr != name)
+      {
+        if( 0 == indent_level)
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "\"%s\": {\n", name);
+        }
+        else
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "%*s\"%s\": {\n", indent_level, " ", name);
+        }
+      }
+      else
+      {
+        if( 0 == indent_level)
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "{\n");
+        }
+        else
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "%*s{\n", indent_level, " ");
+        }
+      }
+      
+      if(0 < n_chars_used)
+      {
+        left_chars.data += n_chars_used;
+        left_chars.size -= n_chars_used;
+      }
+
+      left_chars = u_.to_string(left_chars, indent_level + 2, U_NAME, true);
+      left_chars = v_.to_string(left_chars, indent_level + 2, V_NAME, false);
+      left_chars = w_.to_string(left_chars, indent_level + 2, W_NAME, false);
+  
+      if( 0 == indent_level) 
+      {
+        n_chars_used = snprintf(left_chars.data, left_chars.size, "\n}");
+      }
+      else 
+      {
+        n_chars_used = snprintf(left_chars.data, left_chars.size, "\n%*s}", indent_level, " ");
+      }
+
+      if(0 < n_chars_used)
+      {
+        left_chars.data += n_chars_used;
+        left_chars.size -= n_chars_used;
+      }
+
+      return left_chars;
+    }
+
+#endif // End of MSG_TO_STRING
 
   private:
 
-    EmbeddedProto::doublefixed u_;
-    EmbeddedProto::doublefixed v_;
-    EmbeddedProto::doublefixed w_;
+
+      EmbeddedProto::doublefixed u_ = 0.0;
+      EmbeddedProto::doublefixed v_ = 0.0;
+      EmbeddedProto::doublefixed w_ = 0.0;
 
 };
 
 class reply final: public ::EmbeddedProto::MessageInterface
 {
   public:
-    reply() :
-        msgId_(),
-        which_type_(id::NOT_SET)
+    reply() = default;
+    reply(const reply& rhs )
     {
+      set_msgId(rhs.get_msgId());
+      if(rhs.get_which_type() != which_type_)
+      {
+        // First delete the old object in the oneof.
+        clear_type();
+      }
 
-    };
+      switch(rhs.get_which_type())
+      {
+        case FieldNumber::A:
+          set_a(rhs.get_a());
+          break;
+
+        case FieldNumber::B:
+          set_b(rhs.get_b());
+          break;
+
+        default:
+          break;
+      }
+
+    }
+
+    reply(const reply&& rhs ) noexcept
+    {
+      set_msgId(rhs.get_msgId());
+      if(rhs.get_which_type() != which_type_)
+      {
+        // First delete the old object in the oneof.
+        clear_type();
+      }
+
+      switch(rhs.get_which_type())
+      {
+        case FieldNumber::A:
+          set_a(rhs.get_a());
+          break;
+
+        case FieldNumber::B:
+          set_b(rhs.get_b());
+          break;
+
+        default:
+          break;
+      }
+
+    }
+
     ~reply() override = default;
 
-    enum class id
+    enum class FieldNumber : uint32_t
     {
       NOT_SET = 0,
       MSGID = 1,
@@ -330,254 +603,443 @@ class reply final: public ::EmbeddedProto::MessageInterface
       B = 3
     };
 
-    inline EmbeddedProto::uint32::FIELD_TYPE msgId() const { return msgId_.get(); }
-    inline void clear_msgId() { msgId_.set(0U); }
-    inline void set_msgId(const EmbeddedProto::uint32::FIELD_TYPE& value) { msgId_.set(value); }
-    inline void set_msgId(const EmbeddedProto::uint32::FIELD_TYPE&& value) { msgId_.set(value); }
-    inline EmbeddedProto::uint32::FIELD_TYPE get_msgId() const { return msgId_.get(); }
-
-    id get_which_type() const { return which_type_; }
-
-    inline const demo::A& a() const { return type_.a_; }
-    inline void clear_a()
+    reply& operator=(const reply& rhs)
     {
-      if(id::A == which_type_)
-      {
-        which_type_ = id::NOT_SET;
-        type_.a_.~A();
-      }
-    }
-    inline void set_a(const demo::A& value)
-    {
-      if(id::A != which_type_)
-      {
-        init_type(id::A);
-      }
-      type_.a_ = value;
-    }
-    inline void set_a(const demo::A&& value)
-    {
-      if(id::A != which_type_)
-      {
-        init_type(id::A);
-      }
-      type_.a_ = value;
-    }
-    inline demo::A& mutable_a()
-    {
-      if(id::A != which_type_)
-      {
-        init_type(id::A);
-      }
-      return type_.a_;
-    }
-    inline const demo::A& get_a() const { return type_.a_; }
-
-    inline const demo::B& b() const { return type_.b_; }
-    inline void clear_b()
-    {
-      if(id::B == which_type_)
-      {
-        which_type_ = id::NOT_SET;
-        type_.b_.~B();
-      }
-    }
-    inline void set_b(const demo::B& value)
-    {
-      if(id::B != which_type_)
-      {
-        init_type(id::B);
-      }
-      type_.b_ = value;
-    }
-    inline void set_b(const demo::B&& value)
-    {
-      if(id::B != which_type_)
-      {
-        init_type(id::B);
-      }
-      type_.b_ = value;
-    }
-    inline demo::B& mutable_b()
-    {
-      if(id::B != which_type_)
-      {
-        init_type(id::B);
-      }
-      return type_.b_;
-    }
-    inline const demo::B& get_b() const { return type_.b_; }
-
-    bool serialize(::EmbeddedProto::WriteBufferInterface& buffer) const final
-    {
-      bool result = true;
-
-      if((0U != msgId_.get()) && result)
-      {
-        result = msgId_.serialize_with_id(static_cast<uint32_t>(id::MSGID), buffer);
-      }  
-
-      switch(which_type_)
-      {
-        case id::A:
-          if(result)
-            {
-              result = type_.a_.serialize_with_id(static_cast<uint32_t>(id::A), buffer);
-            }
-             
-          break;
-
-        case id::B:
-          if(result)
-            {
-              result = type_.b_.serialize_with_id(static_cast<uint32_t>(id::B), buffer);
-            }
-             
-          break;
-
-        default:
-          break;
-      }
-
-      return result;
-    };
-
-    bool deserialize(::EmbeddedProto::ReadBufferInterface& buffer) final
-    {
-      bool result = true;
-      ::EmbeddedProto::WireFormatter::WireType wire_type;
-      uint32_t id_number = 0;
-
-      while(result && ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number))
-      {
-        switch(id_number)
-        {
-          case static_cast<uint32_t>(id::MSGID):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::VARINT == wire_type)
-            {
-              result = msgId_.deserialize(buffer);
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
-            break;
-          }
-
-          case static_cast<uint32_t>(id::A):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::LENGTH_DELIMITED == wire_type)
-            {
-              uint32_t size;
-              result = ::EmbeddedProto::WireFormatter::DeserializeVarint(buffer, size);
-              ::EmbeddedProto::ReadBufferSection bufferSection(buffer, size);
-              init_type(id::A);
-              result = result && type_.a_.deserialize(bufferSection);
-              if(result)
-              {
-                which_type_ = id::A;
-              }
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
-            break;
-          }
-
-          case static_cast<uint32_t>(id::B):
-          {
-            if(::EmbeddedProto::WireFormatter::WireType::LENGTH_DELIMITED == wire_type)
-            {
-              uint32_t size;
-              result = ::EmbeddedProto::WireFormatter::DeserializeVarint(buffer, size);
-              ::EmbeddedProto::ReadBufferSection bufferSection(buffer, size);
-              init_type(id::B);
-              result = result && type_.b_.deserialize(bufferSection);
-              if(result)
-              {
-                which_type_ = id::B;
-              }
-            }
-            else
-            {
-              // TODO Error wire type does not match field.
-              result = false;
-            } 
-            break;
-          }
-
-          default:
-            break;
-        }
-      }
-      return result;
-    };
-
-    void clear() final
-    {
-      clear_msgId();
-      clear_type();
-    }
-
-  private:
-
-    EmbeddedProto::uint32 msgId_;
-
-    id which_type_;
-    union type
-    {
-      type() {}
-      ~type() {}
-      demo::A a_;
-      demo::B b_;
-    };
-    type type_;
-
-    void init_type(const id field_id)
-    {
-      if(id::NOT_SET != which_type_)
+      set_msgId(rhs.get_msgId());
+      if(rhs.get_which_type() != which_type_)
       {
         // First delete the old object in the oneof.
         clear_type();
       }
 
-      // C++11 unions only support nontrivial members when you explicitly call the placement new statement.
-      switch(field_id)
+      switch(rhs.get_which_type())
       {
-        case id::A:
-          new(&type_.a_) demo::A;
-          which_type_ = id::A;
+        case FieldNumber::A:
+          set_a(rhs.get_a());
           break;
-        case id::B:
-          new(&type_.b_) demo::B;
-          which_type_ = id::B;
-          break;
-        default:
-          break;
-       }
-    }
 
-    void clear_type()
-    {
-      switch(which_type_)
-      {
-        case id::A:
-          type_.a_.~A();
+        case FieldNumber::B:
+          set_b(rhs.get_b());
           break;
-        case id::B:
-          type_.b_.~B();
-          break;
+
         default:
           break;
       }
-      which_type_ = id::NOT_SET;
+
+      return *this;
     }
 
+    reply& operator=(const reply&& rhs) noexcept
+    {
+      set_msgId(rhs.get_msgId());
+      if(rhs.get_which_type() != which_type_)
+      {
+        // First delete the old object in the oneof.
+        clear_type();
+      }
+
+      switch(rhs.get_which_type())
+      {
+        case FieldNumber::A:
+          set_a(rhs.get_a());
+          break;
+
+        case FieldNumber::B:
+          set_b(rhs.get_b());
+          break;
+
+        default:
+          break;
+      }
+
+      return *this;
+    }
+
+    static constexpr char const* MSGID_NAME = "msgId";
+    inline void clear_msgId() { msgId_.clear(); }
+    inline void set_msgId(const uint32_t& value) { msgId_ = value; }
+    inline void set_msgId(const uint32_t&& value) { msgId_ = value; }
+    inline uint32_t& mutable_msgId() { return msgId_.get(); }
+    inline const uint32_t& get_msgId() const { return msgId_.get(); }
+    inline uint32_t msgId() const { return msgId_.get(); }
+
+    FieldNumber get_which_type() const { return which_type_; }
+
+    static constexpr char const* A_NAME = "a";
+    inline bool has_a() const
+    {
+      return FieldNumber::A == which_type_;
+    }
+    inline void clear_a()
+    {
+      if(FieldNumber::A == which_type_)
+      {
+        which_type_ = FieldNumber::NOT_SET;
+        type_.a_.~A();
+      }
+    }
+    inline void set_a(const A& value)
+    {
+      if(FieldNumber::A != which_type_)
+      {
+        init_type(FieldNumber::A);
+      }
+      type_.a_ = value;
+    }
+    inline void set_a(const A&& value)
+    {
+      if(FieldNumber::A != which_type_)
+      {
+        init_type(FieldNumber::A);
+      }
+      type_.a_ = value;
+    }
+    inline A& mutable_a()
+    {
+      if(FieldNumber::A != which_type_)
+      {
+        init_type(FieldNumber::A);
+      }
+      return type_.a_;
+    }
+    inline const A& get_a() const { return type_.a_; }
+    inline const A& a() const { return type_.a_; }
+
+    static constexpr char const* B_NAME = "b";
+    inline bool has_b() const
+    {
+      return FieldNumber::B == which_type_;
+    }
+    inline void clear_b()
+    {
+      if(FieldNumber::B == which_type_)
+      {
+        which_type_ = FieldNumber::NOT_SET;
+        type_.b_.~B();
+      }
+    }
+    inline void set_b(const B& value)
+    {
+      if(FieldNumber::B != which_type_)
+      {
+        init_type(FieldNumber::B);
+      }
+      type_.b_ = value;
+    }
+    inline void set_b(const B&& value)
+    {
+      if(FieldNumber::B != which_type_)
+      {
+        init_type(FieldNumber::B);
+      }
+      type_.b_ = value;
+    }
+    inline B& mutable_b()
+    {
+      if(FieldNumber::B != which_type_)
+      {
+        init_type(FieldNumber::B);
+      }
+      return type_.b_;
+    }
+    inline const B& get_b() const { return type_.b_; }
+    inline const B& b() const { return type_.b_; }
+
+
+    ::EmbeddedProto::Error serialize(::EmbeddedProto::WriteBufferInterface& buffer) const override
+    {
+      ::EmbeddedProto::Error return_value = ::EmbeddedProto::Error::NO_ERRORS;
+
+      if((0U != msgId_.get()) && (::EmbeddedProto::Error::NO_ERRORS == return_value))
+      {
+        return_value = msgId_.serialize_with_id(static_cast<uint32_t>(FieldNumber::MSGID), buffer, false);
+      }
+
+      switch(which_type_)
+      {
+        case FieldNumber::A:
+          if(has_a() && (::EmbeddedProto::Error::NO_ERRORS == return_value))
+          {
+            return_value = type_.a_.serialize_with_id(static_cast<uint32_t>(FieldNumber::A), buffer, true);
+          }
+          break;
+
+        case FieldNumber::B:
+          if(has_b() && (::EmbeddedProto::Error::NO_ERRORS == return_value))
+          {
+            return_value = type_.b_.serialize_with_id(static_cast<uint32_t>(FieldNumber::B), buffer, true);
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      return return_value;
+    };
+
+    ::EmbeddedProto::Error deserialize(::EmbeddedProto::ReadBufferInterface& buffer) override
+    {
+      ::EmbeddedProto::Error return_value = ::EmbeddedProto::Error::NO_ERRORS;
+      ::EmbeddedProto::WireFormatter::WireType wire_type = ::EmbeddedProto::WireFormatter::WireType::VARINT;
+      uint32_t id_number = 0;
+      FieldNumber id_tag = FieldNumber::NOT_SET;
+
+      ::EmbeddedProto::Error tag_value = ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number);
+      while((::EmbeddedProto::Error::NO_ERRORS == return_value) && (::EmbeddedProto::Error::NO_ERRORS == tag_value))
+      {
+        id_tag = static_cast<FieldNumber>(id_number);
+        switch(id_tag)
+        {
+          case FieldNumber::MSGID:
+            return_value = msgId_.deserialize_check_type(buffer, wire_type);
+            break;
+
+          case FieldNumber::A:
+          case FieldNumber::B:
+            return_value = deserialize_type(id_tag, buffer, wire_type);
+            break;
+
+          case FieldNumber::NOT_SET:
+            return_value = ::EmbeddedProto::Error::INVALID_FIELD_ID;
+            break;
+
+          default:
+            return_value = skip_unknown_field(buffer, wire_type);
+            break;
+        }
+
+        if(::EmbeddedProto::Error::NO_ERRORS == return_value)
+        {
+          // Read the next tag.
+          tag_value = ::EmbeddedProto::WireFormatter::DeserializeTag(buffer, wire_type, id_number);
+        }
+      }
+
+      // When an error was detect while reading the tag but no other errors where found, set it in the return value.
+      if((::EmbeddedProto::Error::NO_ERRORS == return_value)
+         && (::EmbeddedProto::Error::NO_ERRORS != tag_value)
+         && (::EmbeddedProto::Error::END_OF_BUFFER != tag_value)) // The end of the buffer is not an array in this case.
+      {
+        return_value = tag_value;
+      }
+
+      return return_value;
+    };
+
+    void clear() override
+    {
+      clear_msgId();
+      clear_type();
+
+    }
+
+    static char const* field_number_to_name(const FieldNumber fieldNumber)
+    {
+      char const* name = nullptr;
+      switch(fieldNumber)
+      {
+        case FieldNumber::MSGID:
+          name = MSGID_NAME;
+          break;
+        case FieldNumber::A:
+          name = A_NAME;
+          break;
+        case FieldNumber::B:
+          name = B_NAME;
+          break;
+        default:
+          name = "Invalid FieldNumber";
+          break;
+      }
+      return name;
+    }
+
+#ifdef MSG_TO_STRING
+
+    ::EmbeddedProto::string_view to_string(::EmbeddedProto::string_view& str) const
+    {
+      return this->to_string(str, 0, nullptr, true);
+    }
+
+    ::EmbeddedProto::string_view to_string(::EmbeddedProto::string_view& str, const uint32_t indent_level, char const* name, const bool first_field) const override
+    {
+      ::EmbeddedProto::string_view left_chars = str;
+      int32_t n_chars_used = 0;
+
+      if(!first_field)
+      {
+        // Add a comma behind the previous field.
+        n_chars_used = snprintf(left_chars.data, left_chars.size, ",\n");
+        if(0 < n_chars_used)
+        {
+          // Update the character pointer and characters left in the array.
+          left_chars.data += n_chars_used;
+          left_chars.size -= n_chars_used;
+        }
+      }
+
+      if(nullptr != name)
+      {
+        if( 0 == indent_level)
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "\"%s\": {\n", name);
+        }
+        else
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "%*s\"%s\": {\n", indent_level, " ", name);
+        }
+      }
+      else
+      {
+        if( 0 == indent_level)
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "{\n");
+        }
+        else
+        {
+          n_chars_used = snprintf(left_chars.data, left_chars.size, "%*s{\n", indent_level, " ");
+        }
+      }
+      
+      if(0 < n_chars_used)
+      {
+        left_chars.data += n_chars_used;
+        left_chars.size -= n_chars_used;
+      }
+
+      left_chars = msgId_.to_string(left_chars, indent_level + 2, MSGID_NAME, true);
+      left_chars = to_string_type(left_chars, indent_level + 2, false);
+  
+      if( 0 == indent_level) 
+      {
+        n_chars_used = snprintf(left_chars.data, left_chars.size, "\n}");
+      }
+      else 
+      {
+        n_chars_used = snprintf(left_chars.data, left_chars.size, "\n%*s}", indent_level, " ");
+      }
+
+      if(0 < n_chars_used)
+      {
+        left_chars.data += n_chars_used;
+        left_chars.size -= n_chars_used;
+      }
+
+      return left_chars;
+    }
+
+#endif // End of MSG_TO_STRING
+
+  private:
+
+
+      EmbeddedProto::uint32 msgId_ = 0U;
+
+      FieldNumber which_type_ = FieldNumber::NOT_SET;
+      union type
+      {
+        type() {}
+        ~type() {}
+        A a_;
+        B b_;
+      };
+      type type_;
+
+      void init_type(const FieldNumber field_id)
+      {
+        if(FieldNumber::NOT_SET != which_type_)
+        {
+          // First delete the old object in the oneof.
+          clear_type();
+        }
+
+        // C++11 unions only support nontrivial members when you explicitly call the placement new statement.
+        switch(field_id)
+        {
+          case FieldNumber::A:
+            new(&type_.a_) A;
+            break;
+
+          case FieldNumber::B:
+            new(&type_.b_) B;
+            break;
+
+          default:
+            break;
+         }
+
+         which_type_ = field_id;
+      }
+
+      void clear_type()
+      {
+        switch(which_type_)
+        {
+          case FieldNumber::A:
+            ::EmbeddedProto::destroy_at(&type_.a_);
+            break;
+          case FieldNumber::B:
+            ::EmbeddedProto::destroy_at(&type_.b_);
+            break;
+          default:
+            break;
+        }
+        which_type_ = FieldNumber::NOT_SET;
+      }
+
+      ::EmbeddedProto::Error deserialize_type(const FieldNumber field_id, 
+                                    ::EmbeddedProto::ReadBufferInterface& buffer,
+                                    const ::EmbeddedProto::WireFormatter::WireType wire_type)
+      {
+        ::EmbeddedProto::Error return_value = ::EmbeddedProto::Error::NO_ERRORS;
+        
+        if(field_id != which_type_)
+        {
+          init_type(field_id);
+        }
+
+        switch(which_type_)
+        {
+          case FieldNumber::A:
+            return_value = type_.a_.deserialize_check_type(buffer, wire_type);
+            break;
+          case FieldNumber::B:
+            return_value = type_.b_.deserialize_check_type(buffer, wire_type);
+            break;
+          default:
+            break;
+        }
+
+        if(::EmbeddedProto::Error::NO_ERRORS != return_value)
+        {
+          clear_type();
+        }
+        return return_value;
+      }
+
+#ifdef MSG_TO_STRING 
+      ::EmbeddedProto::string_view to_string_type(::EmbeddedProto::string_view& str, const uint32_t indent_level, const bool first_field) const
+      {
+        ::EmbeddedProto::string_view left_chars = str;
+
+        switch(which_type_)
+        {
+          case FieldNumber::A:
+            left_chars = type_.a_.to_string(left_chars, indent_level, A_NAME, first_field);
+            break;
+          case FieldNumber::B:
+            left_chars = type_.b_.to_string(left_chars, indent_level, B_NAME, first_field);
+            break;
+          default:
+            break;
+        }
+
+        return left_chars;
+      }
+
+#endif // End of MSG_TO_STRING
 };
 
 } // End of namespace demo
-#endif // _REPLY_H_
+#endif // REPLY_H
