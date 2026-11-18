@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Copyright (C) 2020-2024 Embedded AMS B.V. - All Rights Reserved
+# Copyright (C) 2020-2026 Embedded AMS B.V. - All Rights Reserved
 #
 # This file is part of Embedded Proto.
 #
@@ -30,8 +30,7 @@
 #   the Netherlands
 #
 
-cd ./embeddedproto
-
-# Execute protoc on the various *.proto files.
-protoc --plugin=protoc-gen-eams=protoc-gen-eams -I../proto --eams_out=../Core/Generated ../proto/reply.proto
-protoc --plugin=protoc-gen-eams=protoc-gen-eams -I../proto --eams_out=../Core/Generated ../proto/request.proto
+# The embeddedproto command lives in the virtual environment of the submodule, created by running install.py in
+# that folder. It runs the protobuf compiler which came with the package and adds the plugin for you.
+./embeddedproto/venv/bin/embeddedproto -I./proto --eams_out=./Core/Generated ./proto/reply.proto
+./embeddedproto/venv/bin/embeddedproto -I./proto --eams_out=./Core/Generated ./proto/request.proto
